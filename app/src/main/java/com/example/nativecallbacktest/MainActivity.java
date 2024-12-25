@@ -8,8 +8,8 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "NativeCallbackTest";
 
     static {
-        System.loadLibrary("library1");
-        System.loadLibrary("library2");
+        System.loadLibrary("draminski");
+        System.loadLibrary("leltek");
     }
 
     private NativeInterop nativeInterop = new NativeInterop();

@@ -17,13 +17,27 @@ static CallbackProcessImage registered_callbackProcessImage = NULL;
 JNIEXPORT void JNICALL
 Java_com_example_nativecallbacktest_NativeInterop_registerCallbackInLibrary2(JNIEnv *env, jobject obj, jlong functionPointer) {
     registered_callback = (Callback)functionPointer;
-    LOGI("Callback registered successfully.");
+    LOGI("Callback registered successfully [registered_callback].");
 }
 
 JNIEXPORT void JNICALL
 Java_com_example_nativecallbacktest_NativeInterop_registerCallbackInLibrary2ProcessImage(JNIEnv *env, jobject obj, jlong functionPointer) {
     registered_callbackProcessImage = (CallbackProcessImage)functionPointer;
-    LOGI("Callback registered successfully.");
+    LOGI("Callback registered successfully [registered_callbackProcessImage].");
+}
+
+void leltek_ProcessImage()
+{
+    char img[4] = {1,2,3,4};
+
+    LOGI("Image BEFORE %d %d %d %d.\n", img[0],img[1],img[2],img[3]);
+
+    if (registered_callbackProcessImage != NULL)
+    {
+        int result = registered_callbackProcessImage(img, 2, 2);
+    }
+    LOGI("Image AFTER %d %d %d %d.\n", img[0],img[1],img[2],img[3]);
+
 }
 
 JNIEXPORT void JNICALL
@@ -37,13 +51,5 @@ Java_com_example_nativecallbacktest_NativeInterop_triggerCallback(JNIEnv *env, j
         LOGI("No callback registered.\n");
     }
 
-    char img[4] = {1,2,3,4};
-
-    LOGI("Image BEFORE %d %d %d %d.\n", img[0],img[1],img[2],img[3]);
-
-    if (registered_callbackProcessImage != NULL)
-    {
-        int result = registered_callbackProcessImage(img, 2, 2);
-    }
-    LOGI("Image AFTER %d %d %d %d.\n", img[0],img[1],img[2],img[3]);
+    leltek_ProcessImage();
 }
