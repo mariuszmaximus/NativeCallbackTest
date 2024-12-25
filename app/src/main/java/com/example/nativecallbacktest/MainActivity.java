@@ -21,6 +21,11 @@ public class MainActivity extends AppCompatActivity {
         // Zarejestruj i wywołaj callback
         long callbackPointer = nativeInterop.getCallbackFunctionPointer();
         nativeInterop.registerCallbackInLibrary2(callbackPointer);
+
+        long callbackPointerProcessImage = nativeInterop.getCallbackFunctionPointerProcessImage();
+        nativeInterop.registerCallbackInLibrary2ProcessImage(callbackPointerProcessImage);
+
+
         nativeInterop.triggerCallback();
 
         Log.d(TAG, "Callback test finished");

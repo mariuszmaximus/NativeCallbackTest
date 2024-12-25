@@ -7,7 +7,10 @@ public class NativeInterop {
     }
 
     public native long getCallbackFunctionPointer();
+    public native long getCallbackFunctionPointerProcessImage();
     public native void registerCallbackInLibrary2(long functionPointer);
+
+    public native void registerCallbackInLibrary2ProcessImage(long functionPointer);
     public native void triggerCallback();
 
     public static void main(String[] args) {
