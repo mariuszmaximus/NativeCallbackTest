@@ -2,8 +2,8 @@ package com.example.nativecallbacktest;
 
 public class NativeInterop {
     static {
-        System.loadLibrary("library1");
-        System.loadLibrary("library2");
+        System.loadLibrary("draminski");
+        System.loadLibrary("leltek");
     }
 
     public native long getCallbackFunctionPointer();
